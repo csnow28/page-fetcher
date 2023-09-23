@@ -7,19 +7,19 @@ const request = require('request');
 const URL = process.argv[2];
 const file = process.argv[3];
 
-request.get(URL, function (error, response, body) {
+request.get(URL, function(error, response, body) {
   if (!URL || !file) {
-    console.log("Please enter a valid URL and filepath and run again.")
+    console.log("Please enter a valid URL and filepath and run again.");
     process.exit();
   }
   if (response.statusCode !== 200) {
-    console.log("Couldn't access URL, check and run again.")
-    process.exit()
+    console.log("Couldn't access URL, check and run again.");
+    process.exit();
   }
-  fs.stat(file, function (err) {
+  fs.stat(file, function(err) {
     if (err === null) {
-      const { size } = fs.statSync(file)
-      console.log(`Downloaded and saved ${size} bytes to ${file}`)
-    };
-  })
-})
+      const { size } = fs.statSync(file);
+      console.log(`Downloaded and saved ${size} bytes to ${file}`);
+    }
+  });
+});
